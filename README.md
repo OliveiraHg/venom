@@ -15,12 +15,14 @@
 > pkg install nodejs && pkg install git
 > git clone https://Venom-ofc/Venombot-tec
 > cd Venombot-tec
+> rm venom.json
 > bash venom-pt.sh
 > node venombot-pt
 ```
 ## COMO INSTALAR ESTE BOT NO PC
 ```bash
 > git clone https://Venom-ofc/Venombot-tec
+> rm venom.json
 > cd Venombot-tec
 > npm i
 > node venombot-pt
@@ -119,6 +121,7 @@
 > pkg install nodejs && pkg install git
 > git clone https://github.com/Venom-ofc/Venombot-tec
 > cd Venombot-tec
+> rm venom.json
 > bash venom-indo.sh
 > node venombot-indo
 ```
@@ -126,6 +129,7 @@
 ```bash
 > git clone https://github.com/Venom-ofc/Venombot-tec
 > cd Venombot-tec
+> rm venom.json
 > npm i
 > node venombit-indo
 ```
