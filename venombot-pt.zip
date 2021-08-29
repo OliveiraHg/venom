@@ -1,0 +1,1557 @@
+// VOCÊ  MIN DEVE TODOS OS CRÉDITOS OK 
+// NÃO  RETIRE LS CREDITO DO BOT
+// ESTE BOT FOI FEITO POR VENOM HI 
+// TODAS AS FUNÇÕES FORAM FAITAS DO 0
+// ENTÃO SE VOCÊ  QUE KIBAR SAIBA ESTE BOT ESTA PROTEGIDO POR COMIST
+// AO MODIFCAR DEIXA OS CREDITOS SEMPRE ATIVO 
+// ESTE É O UM BOT PARA TERMUX E PC 
+// ENTÃO VOCÊ NAO PODE ADICIONAR COMANDO SEM PERMISSÃO 
+// CASO VOCÊ ADICINAR COMANDO OU CASES O A SCRITP IRA DA ERROS
+// SE VOCÊ TEM COMANDO E DESAJA ADD NO BOT CHAME OS DOIS DONO
+// DONOS DESTE BOT: VENOM:559791435184 NAZE:6285875158363
+// BOM USO ESPERO QUE TENHA GOSTADO 
+// SE FOR POSTA A VASE EM UM VIDEO DEIXA O CANAL DO DONO OK
+// ᶜᵃⁿᵃˡ: https://youtube.com/channel/UCOoc5DOT_M6foZa1jSOI6JQ
+const
+	{
+		WAConnection,
+		MessageType,
+		Presence,
+		MessageOptions,
+		Mimetype,
+		WALocationMessage,
+		WA_MESSAGE_STUB_TYPES,
+		WA_DEFAULT_EPHEMERAL,
+		ReconnectMode,
+		ProxyAgent,
+		GroupSettingChange,
+		waChatKey,
+		mentionedJid,
+		processTime,
+	} = require("@adiwajshing/baileys")
+const qrcode = require("qrcode-terminal")
+const moment = require("moment-timezone")
+const speed = require('performance-now')
+const request = require('request');
+const { spawn, exec, execSync } = require("child_process")
+const fs = require("fs")
+const axios = require("axios")
+const ffmpeg = require('fluent-ffmpeg')
+const { EmojiAPI } = require("emoji-api");
+const tik = require('tiktok-scraper-without-watermark')
+const ig = require('insta-fetcher')
+const emoji = new EmojiAPI()
+const fetch = require('node-fetch');
+const Fb = require('fb-video-downloader');
+const twitterGetUrl = require("twitter-url-direct")
+const phoneNum = require('awesome-phonenumber')
+const gis = require('g-i-s');
+const got = require("got");
+const imageToBase64 = require('image-to-base64');
+const ID3Writer = require('browser-id3-writer');		
+const brainly = require('brainly-scraper')
+const yts = require( 'yt-search')
+const ms = require('parse-ms')
+const toMs = require('ms')
+const { error } = require("qrcode-terminal")
+const { getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
+const { color, bgcolor } = require('./lib/color')
+const { fetchJson, getBase64, kyun, createExif } = require('./lib/fetcher')
+const { yta, ytv, igdl, upload, formatDate } = require('./lib/ytdl')
+const { webp2mp4File} = require('./lib/webp2mp4')
+const time = moment().tz('Asia/Jakarta').format("HH:mm:ss")
+const configurações = JSON.parse(fs.readFileSync('./configurações/configurações.zip'))
+const afk = JSON.parse(fs.readFileSync('./lib/off.json'))
+const { sleep, isAfk, cekafk, addafk } = require('./lib/offline')
+const ZeksApi = 'apivinz'//não mexa nas apis pode da erros
+const TobzKey = 'BotWeA' //não mexa nas apis pode da erros
+
+
+banChats = true //const de ban não mexa 
+offline = false //não mexa
+targetpc = '559791435184' //não retire o número 
+owner = '559791435184' //não retire o número 
+fake = configurações.fake //não retire o nome deixa como creditos
+numerodono = configurações.numerodono
+grupo = configurações.grupo
+suporte = configurações.suporte
+idadedono = configurações.idadedono
+nomedono = configurações.nomedono
+barbar = configurações.barbar
+github = configurações.github
+cidade = configurações.cidade
+venommods = configurações.venommods
+selo = configurações.selo
+apivenom = configurações.apivenom
+nomebot = configurações.nomebot
+naze = configurações.naze
+venom1 = configurações.venom1
+venom2 = configurações.venom2
+borda1 = configurações.borda1
+borda2 = configurações.borda2
+borda3 = configurações.borda3
+borda4 = configurações.borda4
+borda5 = configurações.borda5
+
+numbernye = '0'
+waktu = '-'
+alasan = '-'
+//=================================================//
+module.exports = venom = async (venom, mek) => {
+	try {
+        if (!mek.hasNewMessage) return
+        mek = mek.messages.all()[0]
+		if (!mek.message) return
+		if (mek.key && mek.key.remoteJid == 'status@broadcast') return
+		global.blocked
+        	mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
+        	const content = JSON.stringify(mek.message)
+		const from = mek.key.remoteJid
+		const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
+		const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
+                const type = Object.keys(mek.message)[0]        
+                const cmd = (type === 'conversation' && mek.message.conversation) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text ? mek.message.extendedTextMessage.text : ''.slice(1).trim().split(/ +/).shift().toLowerCase()
+                const prefix = /^[°•π÷×¶∆£¢€¥®™=|~ !#$%^&.?/\\©^z+*@,;]/.test(cmd) ? cmd.match(/^[°•π÷×¶∆£¢€¥®™=|~ !#$%^&.?/\\©^z+*,;]/gi) : '-'          	
+        	body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text : ''
+		budy = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : ''
+		const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()		
+		const args = body.trim().split(/ +/).slice(1)
+		const isCmd = body.startsWith(prefix)
+		const q = args.join(' ')
+		const botNumber = venom.user.jid
+		const botNumberss = venom.user.jid + '@c.us'
+		const isGroup = from.endsWith('@g.us')
+		let sender = isGroup ? mek.participant : mek.key.remoteJid
+		// const isSelfNumber = config.NomorSELF
+		// const isOwner = sender.id === isSelfNumber
+		const totalchat = await venom.chats.all()
+		const groupMetadata = isGroup ? await venom.groupMetadata(from) : ''
+		const groupName = isGroup ? groupMetadata.subject : ''
+		const groupId = isGroup ? groupMetadata.jid : ''
+		const groupMembers = isGroup ? groupMetadata.participants : ''
+		const groupDesc = isGroup ? groupMetadata.desc : ''
+		const groupOwner = isGroup ? groupMetadata.owner : ''
+		const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
+		const isBotGroupAdmins = groupAdmins.includes(botNumber) || true
+		const isGroupAdmins = groupAdmins.includes(sender) || true
+        const conts = mek.key.fromMe ? venom.user.jid : venom.contacts[sender] || { notify: jid.replace(/@.+/, '') }
+        const pushname = mek.key.fromMe ? venom.user.name : conts.notify || conts.vname || conts.name || '-'
+        const vcard1 = 'BEGIN:VCARD\n'
+            + 'VERSION:3.0\n'
+            + 'FN:Criador venom\n'
+            + 'ORG:Venom domina pain🥏;\n'
+            + 'TEL;type=CELL;type=VOICE;waid=559791435184:+559791435184\n' //coloque seu número 
+            + 'END:VCARD'
+            const vcard2 = 'BEGIN:VCARD\n'
+            + 'VERSION:3.0\n'
+            + 'FN:Criador Naze\n'
+            + 'ORG:Naze domina pain🥏;\n'
+            + 'TEL;type=CELL;type=VOICE;waid=+6285875158363:+6285875158363\n' //coloque seu número 
+            + 'END:VCARD'
+
+        //mude o texto se você quizer
+		mess = {
+			wait: '🥏Estou trablando nisso...💭',
+			success: 'Sucesso!',
+			wrongFormat: 'Formato errado, tente novamente no menu',
+			error: {
+				stick: 'falhei no adesivo:v',
+				Iv: 'O link nao presta:v'
+			},
+			only: {
+				group: 'Grupo de bate-papo especial',
+			}
+		}
+		const isUrl = (url) => {
+        return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%.+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%+.~#?&/=]*)/, 'gi'))
+        }
+
+        const reply = (teks) => {
+            venom.sendMessage(from, teks, text, {quoted:mek})
+        }
+
+        const sendMess = (hehe, teks) => {
+            venom.sendMessage(hehe, teks, text)
+        }
+
+        const mentions = (teks, memberr, id) => {
+            (id == null || id == undefined || id == false) ? venom.sendMessage(from, teks.trim(), extendedText, { contextInfo: { "mentionedJid": memberr } }) : venom.sendMessage(from, teks.trim(), extendedText, { quoted: mek, contextInfo: { "mentionedJid": memberr } })
+        }
+
+        const fakestatus = (teks) => {
+            venom.sendMessage(from, teks, text, {
+                quoted: {
+                    key: {
+                        fromMe: false,
+                        participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
+                    },
+                    message: {
+                        "imageMessage": {
+                            "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc",
+                            "mimetype": "image/jpeg",
+                            "caption": fake,
+                            "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=",
+                            "fileLength": "28777",
+                            "height": 1080,
+                            "width": 1079,
+                            "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=",
+                            "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=",
+                            "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69",
+                            "mediaKeyTimestamp": "1610993486",
+                            "jpegThumbnail": fs.readFileSync('./stik/thumb.jpeg'),
+                            "scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw=="
+                        }
+                    }
+                }
+            })
+        }
+        const fakethumb = (teks, yes) => {
+            venom.sendMessage(from, teks, image, {thumbnail:fs.readFileSync('./stik/fake.jpeg'),quoted:mek,caption:yes})
+        }
+        const fakegroup = (teks) => {
+            venom.sendMessage(from, teks, text, {
+                quoted: {
+                    key: {
+                        fromMe: false,
+                        participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "6289523258649-1604595598@g.us" } : {})
+                    },
+                    message: {
+                        "imageMessage": {
+                            "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc",
+                            "mimetype": "image/jpeg",
+                            "caption": fake,
+                            "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=",
+                            "fileLength": "28777",
+                            "height": 1080,
+                            "width": 1079,
+                            "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=",
+                            "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=",
+                            "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69",
+                            "mediaKeyTimestamp": "1610993486",
+                            "jpegThumbnail": fs.readFileSync('./stik/thumb.jpeg'),
+                            "scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw=="
+                        }
+                    }
+                }
+            })
+        }
+        const sendStickerFromUrl = async(to, url) => {
+                var names = Date.now() / 10000;
+                var download = function (uri, filename, callback) {
+                    request.head(uri, function (err, res, body) {
+                        request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+                    });
+                };
+                download(url, './stik' + names + '.png', async function () {
+                    console.log('selesai');
+                    let filess = './stik' + names + '.png'
+                    let asw = './stik' + names + '.webp'
+                    exec(`ffmpeg -i ${filess} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${asw}`, (err) => {
+                        let media = fs.readFileSync(asw)
+                        venom.sendMessage(to, media, MessageType.sticker,{quoted:mek})
+                        fs.unlinkSync(filess)
+                        fs.unlinkSync(asw)
+                    });
+                });
+            }
+        const sendMediaURL = async(to, url, text="", mids=[]) =>{
+                if(mids.length > 0){
+                    text = normalizeMention(to, text, mids)
+                }
+                const fn = Date.now() / 10000;
+                const filename = fn.toString()
+                let mime = ""
+                var download = function (uri, filename, callback) {
+                    request.head(uri, function (err, res, body) {
+                        mime = res.headers['content-type']
+                        request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+                    });
+                };
+                download(url, filename, async function () {
+                    console.log('done');
+                    let media = fs.readFileSync(filename)
+                    let type = mime.split("/")[0]+"Message"
+                    if(mime === "image/gif"){
+                        type = MessageType.video
+                        mime = Mimetype.gif
+                    }
+                    if(mime.split("/")[0] === "audio"){
+                        mime = Mimetype.mp4Audio
+                    }
+                    venom.sendMessage(to, media, type, { quoted: mek, mimetype: mime, caption: text,contextInfo: {"mentionedJid": mids}})
+                    
+                    fs.unlinkSync(filename)
+                });
+            }   
+//funções 
+            cekafk(afk)
+            if (!mek.key.remoteJid.endsWith('@g.us') && offline){
+            if (!mek.key.fromMe){
+            if (isAfk(mek.key.remoteJid)) return
+            addafk(mek.key.remoteJid)
+            heheh = ms(Date.now() - waktu) 
+            venom.sendMessage(mek.key.remoteJid,`@${owner} Sedang Offline!\n\n*Alasan :* ${alasan}\n*Sejak :* ${heheh.hours} Jam, ${heheh.minutes} Menit, ${heheh.seconds} Detik lalu\n\nSilahkan Hubungi Lagi Nanti`, MessageType.text,{contextInfo:{ mentionedJid: [`${owner}@s.whatsapp.net`],'stanzaId': "B826873620DD5947E683E3ABE663F263", 'participant': "0@s.whatsapp.net", 'remoteJid': 'status@broadcast', 'quotedMessage': {"imageMessage": {"caption": "*OFFLINE*", 'jpegThumbnail': fs.readFileSync('./stik/thumb.jpeg')}}}})
+            }
+            }   
+        if (mek.key.remoteJid.endsWith('@g.us') && offline) {
+        if (!mek.key.fromMe){
+        if (mek.message.extendedTextMessage != undefined){
+        if (mek.message.extendedTextMessage.contextInfo != undefined){
+        if (mek.message.extendedTextMessage.contextInfo.mentionedJid != undefined){
+        for (let ment of mek.message.extendedTextMessage.contextInfo.mentionedJid) {
+        if (ment === `${owner}@s.whatsapp.net`){
+        if (isAfk(mek.key.remoteJid)) return
+        addafk(mek.key.remoteJid)
+        heheh = ms(Date.now() - waktu)
+        venom.sendMessage(mek.key.remoteJid,`@${owner} Sedang Offline!\n\n *Alasan :* ${alasan}\n *Sejak :* ${heheh.hours} Jam, ${heheh.minutes} Menit, ${heheh.seconds} Detik lalu\n\nSilahkan Hubungi Lagi Nanti`, MessageType.text,{contextInfo:{ mentionedJid: [`${owner}@s.whatsapp.net`],'stanzaId': "B826873620DD5947E683E3ABE663F263", 'participant': "0@s.whatsapp.net", 'remoteJid': 'status@broadcast', 'quotedMessage': {"imageMessage": {"caption": "*OFFLINE*", 'jpegThumbnail': fs.readFileSync('./stik/thumb.jpeg')}}}})
+          }
+        }
+            }
+          }
+        }
+      }
+    }
+//========================================================================================================================//
+		colors = ['red', 'white', 'black', 'blue', 'yellow', 'green']
+		const isMedia = (type === 'imageMessage' || type === 'videoMessage')
+		const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
+		const isQuotedVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
+		const isQuotedAudio = type === 'extendedTextMessage' && content.includes('audioMessage')
+		const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
+      	if (!isGroup && isCmd) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mcomando as\x1b[1;37m]', time, color(command), 'do número', color(sender.split('@')[0]), 'caracteres :', color(args.length))
+      	if (!isGroup && !isCmd) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mtexto as\x1b[1;37m]', time, color('mensagem'), 'do número', color(sender.split('@')[0]), 'caracteres :', color(args.length))
+     	if (isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mcomando as\x1b[1;37m]', time, color(command), 'do número', color(sender.split('@')[0]), 'do grupo', color(groupName), 'caracteres :', color(args.length))
+      	if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mtexto as\x1b[1;37m]', time, color('mensagem'), 'do número', color(sender.split('@')[0]), 'do grupo', color(groupName), 'caracteres :', color(args.length))
+		if (!mek.key.fromMe && banChats === true) return
+
+switch (command) {
+    case 'menu':
+    case 'ajuda':
+    case 'comandos':
+    case 'help':
+        reply('*Enviando🥏*')
+        var menu = `${borda1} 
+Olá ${pushname} bemvindo ao
+「 ${selo} 」
+Prefixo : use qualque um
+
+ᶜʳᵉᵈⁱᵗᵒˢ: para o criador
+ᶜᵃⁿᵃˡ: ${venommods}
+ᵍʳᵘᵖᵒ: ${grupo}
+ᵍⁱᵗʰᵘᵇ: ${github}
+ᵃᵖⁱˢᵛᵉⁿᵒᵐ : ${apivenom}
+ˢᵉᵍᵘⁿᵈᵒ ᵈᵒⁿᵒ Wa.me/${naze}
+ⁱᵈᵃᵈᵉ : ${idadedono}
+ⁿⁱᶜᵏ ${nomedono}
+ⁿᵒᵐᵉ ᵈᵒ ᵇᵒᵗ ${nomebot}
+ᶜⁱᵈᵃᵈᵉ ${cidade}
+ⁿᵘᵐᵉʳᵒ: Wa.me/${numerodono}
+ᵍⁱᵗʰᵘᵇ ⁿᵃˢᵉ:
+ᵍⁱᵗʰᵘᵇ ᵇᵃʳᵇᵃʳ: ${barbar}
+ᵉˢᵗᵉ ᵇᵒᵗ ᶠᵒⁱ ᶠᵉⁱᵗᵒ ᵖᵒʳ :
+ᵛᵉⁿᵒᵐ ᵉ ⁿᵃᶻᵉ ᵃʲᵘᵈᵃ ᵈᵒ ˢᵉʳᵛⁱᵈᵒʳ ᵐᵃⁿᵏᵇᵃʳᵇᵃʳ
+${borda3}⚠️ᵗᵉʳᵐᵒ ᵈᵉ ᵖʳⁱᵛᵃᶜⁱᵈᵃᵈᵉ⚠️${borda4}
+${suporte}
+entre em contato com o venom e a naze 
+apara fala como o venom 
+digite ${prefix}dono1 
+para fala com a naze 
+digite ${prefix}dono2
+${borda1} 
+${borda3}🥏𝐒𝐓𝐈𝐂𝐊𝐄𝐑 𝐌𝐄𝐍𝐔🥏${borda4}
+${venom2} *${prefix}ttp*
+${venom2} *${prefix}attp*
+${venom2} *${prefix}emoji*
+${venom2} *${prefix}sticker*
+${venom2} *${prefix}fdeface*
+${venom2} *${prefix}take* <author|packname>
+${venom2} *${prefix}swm* <author|packname>
+${borda2}
+${venom1} 
+${borda3} 💻𝐓𝐎𝐎𝐋𝐒 𝐌𝐄𝐍𝐔💻 ${borda4}
+${venom2} *${prefix}toimg*
+${venom2} *${prefix}tomp3*
+${venom2} *${prefix}tomp4*
+${venom2} *${prefix}slow*
+${venom2} *${prefix}fast*
+${venom2} *${prefix}reverse*
+${venom2} *${prefix}tourl*
+${borda2}
+${borda1} 
+${borda3}💭𝐒𝐈𝐌𝐏𝐋𝐄𝐒 𝐌𝐄𝐍𝐔💭${borda4}
+${venom2} *${prefix}upswteks*
+${venom2} *${prefix}upswimage*
+${venom2} *${prefix}upswvideo*
+${borda2}
+${borda1} 
+${venom1} 
+${borda3} 🎶𝐒𝐎𝐌 𝐌𝐄𝐍𝐔🎶 ${borda4}
+${venom2} *${prefix}didunia*
+${venom2} *${prefix}myfather*
+${venom2} *${prefix}pap*
+${venom2} *${prefix}welot*
+${venom2} *${prefix}ladadida*
+${venom2} *${prefix}barabere*
+${venom2} *${prefix}fyp*
+${borda2}
+${borda1} 
+${venom1} 
+${borda3}🙆‍♂️𝐅𝐔𝐍 𝐌𝐄𝐍𝐔🙆‍♂️ ${borda4}
+${venom2} *${prefix}apakah*
+${venom2} *${prefix}kapankah*
+${venom2} *${prefix}bisakah*
+${venom2} *${prefix}rate*
+${venom2} *${prefix}nilai*
+${venom2} *${prefix}fitnah*
+${venom2} *${prefix}fitnahpc*
+${venom2} *${prefix}gantengcek*
+${venom2} *${prefix}cantikcek*
+${venom2} *${prefix}kontak*
+${borda2}
+${borda2} 
+${borda1} 
+${venom1} 
+${borda3} 🧧𝐓𝐀𝐆 𝐌𝐄𝐍𝐔🧧${borda4}
+${venom2} *${prefix}hidetag*
+${venom2} *${prefix}kontag*
+${venom2} *${prefix}sticktag*
+${venom2} *${prefix}totag*
+${venom2} *${prefix}tagall* <somente admin>
+${venom2} *${prefix}listadmin*
+${borda2}
+${borda1} 
+${venom1} 
+${borda3} 🔮𝐌𝐈𝐃𝐈𝐀 𝐌𝐄𝐍𝐔🔮 ${borda4}
+${venom2} *${prefix}ytsearch* <nome>
+${venom2} *${prefix}igstalk* <nome>
+${venom2} *${prefix}play* <nome>
+${venom2} *${prefix}video* <nome>
+${venom2} *${prefix}ytmp3* <nome>
+${venom2} *${prefix}ytmp4* <nome>
+${venom2} *${prefix}ig* <link>
+${venom2} *${prefix}twitter* <nome>
+${venom2} *${prefix}tiktok* <nome>
+${venom2} *${prefix}tiktokaudio* <nome>
+${venom2} *${prefix}fb* <link>
+${venom2} *${prefix}brainly* <nome>
+${venom2} *${prefix}image* <nome>
+${venom2} *${prefix}anime* <nome>
+${borda2}
+${borda1} 
+${venom1} 
+${borda3}🎯𝐃𝐎𝐍𝐎 𝐌𝐄𝐍𝐔🎯${borda4}
+${venom2} *${prefix}on*
+${venom2} *${prefix}off*
+${venom2} *${prefix}tm* 
+${venom2} *${prefix}status*
+${venom2} *${prefix}privado* /bot funcionará so pro dono
+${venom2} *${prefix}public* /bot funcionará pra todos
+${venom2} *${prefix}setthumb*
+${venom2} *${prefix}settarget*
+${venom2} *${prefix}setfakeimg*
+${venom2} *${prefix}setreply*
+${venom2} *${prefix}ping*
+${venom2} *${prefix}inspect*
+${venom2} *${prefix}join*
+${venom2} *${prefix}gets*
+${venom2} *${prefix}term* <code>
+${venom2} *${prefix}dono*
+${venom2} *${prefix}creator*
+${venom2} _x_ <code>
+${borda2}
+${borda1} 
+ᵉˢᵗᵉ ᵇᵒᵗ ᵉ ᵉᵈⁱᵗᵃᵛᵉˡ ᵉⁿᵗᵃᵒ 
+ⁿᵃᵒ ʳᵉᵐᵒᵛᵃ ᵒˢ ᶜʳᵉᵈⁱᵗᵒˢ
+ᶜᵃˢᵒ ᶠⁱᶻᵉʳ ᵗᵉᵐᵒˢ ᵗᵉʳᵐᵒˢ ᵈᵉ ᵖʳⁱᵛᵃᶜⁱᵈᵃᵈᵉ
+ᵐᵃⁱˢ ᶜᵒᵐᵃⁿᵈᵒ ⁿᵃˢ ᵖʳᵒˣⁱᵐᵃˢ ᵃᵗᵘᵃˡⁱᶻᵃᶜᵒᵉˢ 
+${borda5}`
+        	fakestatus(menu)
+           	break
+    case 'on':
+            if (!mek.key.fromMe) return 
+            offline = false
+            fakestatus(' ``VENOMBOT ESTA ONLINE``` ')
+            break       
+    case 'status':
+            fakestatus(`*STATUS*\n${offline ? '> OFFLINE' : '> ONLINE'}\n${banChats ? '> SELF-MODE' : '> PUBLIC-MODE'}`)
+            break
+    case 'off':
+            if (!mek.key.fromMe) return 
+            offline = true
+            waktu = Date.now()
+            anuu = args.join(' ') ? args.join(' ') : '-'
+            alasan = anuu
+            fakestatus(' ```VENOMBOT ESTA OFFLINE``` ')
+            break   
+            case 'rate':
+			case 'nilai':
+				if (!isGroup) return reply(mess.only.group)
+					rate = body.slice(1)
+					const ra =['0','4','9','17','28','34','48','59','62','74','83','97','100','29','94','75','82','41','39']
+					const te = ra[Math.floor(Math.random() * ra.length)]
+					venom.sendMessage(from, 'Prgunta : *'+rate+'*\n\nRespota : '+ te+'%', text, { quoted: mek })
+					break
+    case 'get':
+            if(!q) return reply('linknya?')
+            fetch(`${args[0]}`).then(res => res.text())  
+            .then(bu =>{
+            fakestatus(bu)
+            })   
+            break    
+            case 'dono1':
+            case 'owner':
+            case 'dono':
+                  venom.sendMessage(from, {displayname: "Venom-ofc", vcard: vcard1}, MessageType.contact, { quoted: mek})
+                  venom.sendMessage(from, 'Sim, entre em contato com o Venom, não se esqueça de salvar :v',MessageType.text, { quoted: mek} )
+                  venom.sendMessage(from, MessageType.image, {quoted: mek, caption: '*Canal:*\n*https://youtube.com/channel/UCl77jQD3nSFp__z1oRxm-fA*'})
+                  break
+            case 'dono2':
+            case 'owner':
+            case 'creator':
+                  venom.sendMessage(from, {displayname: "Naze-ofc", vcard: vcard2}, MessageType.contact, { quoted: mek})
+                  venom.sendMessage(from, 'Sim, entre em contato com a Naze, não se esqueça de salvar :v',MessageType.text, { quoted: mek} )
+                  venom.sendMessage(from, MessageType.image, {quoted: mek, caption: '*Canal:*\n*https://youtube.com/channel/UCl77jQD3nSFp__z1oRxm-fA*'})
+                  break      
+                  case 'tagall':
+					if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins) return reply(mess.only.groupAdmins)
+					members_id = []
+					teks = (args.length > 1) ? body.slice(8).trim() : ''
+					teks += '\n\n'
+					for (let mem of groupMembers) {
+						teks += `┣➥ @${mem.jid.split('@')[0]}\n`
+						members_id.push(mem.jid)
+					}
+					mentions(teks, members_id, true)
+					break
+    case 'kontag':
+            if (!isGroup) return reply(mess.only.group)
+            pe = args.join('')
+            entah = pe.split('|')[0]
+            nah = pe.split('|')[1]
+            if (isNaN(entah)) return reply('Número inválido');
+            members_ids = []
+            for (let mem of groupMembers) {
+            members_ids.push(mem.jid)
+            }
+            vcard = 'BEGIN:VCARD\n'
+            + 'VERSION:3.0\n'
+            + `FN:${nah}\n`
+            + `TEL;type=CELL;type=VOICE;waid=${entah}:${phoneNum('+' + entah).getNumber('internasional')}\n`
+            + 'END:VCARD'.trim()
+            venom.sendMessage(from, {displayName: `${nah}`, vcard: vcard}, contact, {contextInfo: {"mentionedJid": members_ids}})
+            break
+            case 'gantengcek':
+			case 'cekganteng':
+				if (!isGroup) return reply(mess.only.group)
+					ganteng = body.slice(12)
+					const gan =['10%','30%','20%','40%','50%','60%','70%','62%','74%','83%','97%','100%','29%','94%','75%','82%','41%','39%']
+					const teng = gan[Math.floor(Math.random() * gan.length)]
+					venom.sendMessage(from, 'Pergunta: Verifique Handsome Bang *'+ganteng+'*\n\nResponder : '+ teng +'', text, { quoted: mek })
+					break
+				case 'cantikcek':
+				case 'cekcantik':
+				if (!isGroup) return reply(mess.only.group)
+					cantik = body.slice(11)
+					if (args.length < 1) return reply('Quem quer verificar mana??')
+					const can =['10% muito "cuidado, mana: v \ nCuidado piada: v ',' 30% Entusiasmo por cuidar de si mesmo> <',' 20% Entusiasmo, Kaká ','40% Wahh Kaká> <','50% irmão, você é tão lindo> <',' 60% Hi BeautifulðŸ ', '70% Hi UkhtyðŸ', '62% Beautiful Brother> <',' 74% Esta irmã é linda> <',' 83% Te amo irmão > <',' 97% Assalamualaikum UkhtyðŸ ',' 100% irmão com Susuk ?? ', '82% Wihh irmão deve ter tratamento frequente, certo ??', '41% animado :)', '39% mais entusiasmadoðŸ']
+					const tik = can[Math.floor(Math.random() * can.length)]
+					venom.sendMessage(from, 'Pergunta: Beautiful Check Brother *'+cantik+'*\n\nPorcentagem de beleza : '+ tik +'', text, { quoted: mek })
+					break
+    case 'sticktag':
+            if ((isMedia && !mek.message.videoMessage || isQuotedSticker) && args.length == 0) {
+            encmedia = isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
+            file = await venom.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
+            value = args.join(" ")
+            var group = await venom.groupMetadata(from)
+            var member = group['participants']
+            var mem = []
+            member.map(async adm => {
+            mem.push(adm.id.replace('c.us', 's.whatsapp.net'))
+            })
+            var options = {
+                contextInfo: { mentionedJid: mem },
+                quoted: mek
+            }
+            ini_buffer = fs.readFileSync(file)
+            venom.sendMessage(from, ini_buffer, sticker, options)
+            fs.unlinkSync(file)
+            } else {
+            reply(`*Marque a figurinhas mno*`)
+            }
+            break
+     case 'traduzir': 
+ if (args.length < 1) return reply('Insira o texto que você deseja traduzir')
+ venom.updatePresence(from, Presence.composing)
+ tels = body.slice(10)
+ try {
+ anu = await fetchJson(`https://venom-apis.herokuapp.com/api/translate?kata=hi&apikey=venom`, {
+ method: 'get'
+  })
+ reply(anu.translated_text)
+ } catch {
+ reply(mess.ferr)
+ }
+break       
+    case 'totag':
+            if ((isMedia && !mek.message.videoMessage || isQuotedSticker) && args.length == 0) {
+            encmedia = isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
+            file = await venom.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
+            value = args.join(" ")
+            var group = await venom.groupMetadata(from)
+            var member = group['participants']
+            var mem = []
+            member.map(async adm => {
+            mem.push(adm.id.replace('c.us', 's.whatsapp.net'))
+            })
+            var options = {
+                contextInfo: { mentionedJid: mem },
+                quoted: mek
+            }
+            ini_buffer = fs.readFileSync(file)
+            venom.sendMessage(from, ini_buffer, sticker, options)
+            fs.unlinkSync(file)
+            } else if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
+            encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
+            file = await venom.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
+            value = args.join(" ")
+            var group = await venom.groupMetadata(from)
+            var member = group['participants']
+            var mem = []
+            member.map(async adm => {
+            mem.push(adm.id.replace('c.us', 's.whatsapp.net'))
+            })
+            var options = {
+                contextInfo: { mentionedJid: mem },
+                quoted: mek
+            }
+            ini_buffer = fs.readFileSync(file)
+            venom.sendMessage(from, ini_buffer, image, options)
+            fs.unlinkSync(file)
+        } else if ((isMedia && !mek.message.videoMessage || isQuotedAudio) && args.length == 0) {
+            encmedia = isQuotedAudio ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
+            file = await venom.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
+            value = args.join(" ")
+            var group = await venom.groupMetadata(from)
+            var member = group['participants']
+            var mem = []
+            member.map(async adm => {
+            mem.push(adm.id.replace('c.us', 's.whatsapp.net'))
+            })
+            var options = {
+            	mimetype : 'audio/mp4',
+            	ptt : true,
+                contextInfo: { mentionedJid: mem },
+                quoted: mek
+            }
+            ini_buffer = fs.readFileSync(file)
+            venom.sendMessage(from, ini_buffer, audio, options)
+            fs.unlinkSync(file)
+        }  else if ((isMedia && !mek.message.videoMessage || isQuotedVideo) && args.length == 0) {
+            encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
+            file = await venom.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
+            value = args.join(" ")
+            var group = await venom.groupMetadata(from)
+            var member = group['participants']
+            var mem = []
+            member.map(async adm => {
+            mem.push(adm.id.replace('c.us', 's.whatsapp.net'))
+            })
+            var options = {
+            	mimetype : 'video/mp4',
+                contextInfo: { mentionedJid: mem },
+                quoted: mek
+            }
+            ini_buffer = fs.readFileSync(file)
+            venom.sendMessage(from, ini_buffer, video, options)
+            fs.unlinkSync(file)
+        } else{
+          reply(`Marque /sticker/audio/video com a legenda ${prefix}totag`)
+        }
+        break
+    case 'fitnah':
+            if (args.length < 1) return reply(`Use :\n${prefix}fitnah [@tag|pesan|balasanbot]]\n\nEx : \n${prefix}fitnah @tagmember|hai|hai juga`)
+            var gh = args.join('')
+            mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
+            var replace = gh.split("|")[0];
+            var target = gh.split("|")[1];
+            var bot = gh.split("|")[2];
+            venom.sendMessage(from, `${bot}`, text, {quoted: { key: { fromMe: false, participant: `${mentioned}`, ...(from ? { remoteJid: from } : {}) }, message: { conversation: `${target}` }}})
+            break
+    case 'settarget':
+            if(!q) return reply(`${prefix}settarget 559791522528`)
+            targetpc = args[0]
+            fakegroup(`Succes Mengganti target fitnahpc : ${targetpc}`)
+            break
+    case 'fitnahpc':
+            if(!q) return reply(`${prefix}fitnahpc texto vemom|mods`)
+            jids = `${targetpc}@s.whatsapp.net` // nomer target
+            var split = args.join(' ').replace(/@|\d/gi, '').split('|')
+            var taged = mek.message.extendedTextMessage.contextInfo.mentionedJid[0]
+            var options = {contextInfo: {quotedMessage: {extendedTextMessage: {text: split[0]}}}}
+            const responye = await venom.sendMessage(jids, `${split[1]}`, MessageType.text, options)
+            await venom.deleteMessage(jids, { id: responye.messageID, remoteJid: jids, fromMe: true })
+            break
+    case 'tomp3':
+            if (!isQuotedVideo) return fakegroup('Marque o video pfv!')
+            fakegroup(mess.wait)
+            encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
+            media = await venom.downloadAndSaveMediaMessage(encmedia)
+            ran = getRandom('.mp4')
+            exec(`ffmpeg -i ${media} ${ran}`, (err) => {
+            fs.unlinkSync(media)
+            if (err) return fakegroup(`Err: ${err}`)
+            buffer453 = fs.readFileSync(ran)
+            venom.sendMessage(from, buffer453, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+            fs.unlinkSync(ran)
+            })
+            break
+    case 'fast':
+            if (!isQuotedVideo) return fakegroup('Marque o video pfv!')
+            fakegroup(mess.wait)
+            encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
+            media = await venom.downloadAndSaveMediaMessage(encmedia)
+            ran = getRandom('.mp4')
+            exec(`ffmpeg -i ${media} -filter_complex "[0:v]setpts=0.5*PTS[v];[0:a]atempo=2[a]" -map "[v]" -map "[a]" ${ran}`, (err) => {
+            fs.unlinkSync(media)
+            if (err) return fakegroup(`Err: ${err}`)
+            buffer453 = fs.readFileSync(ran)
+            venom.sendMessage(from, buffer453, video, { mimetype: 'video/mp4', quoted: mek })
+            fs.unlinkSync(ran)
+            })
+            break
+    case 'slow':
+            if (!isQuotedVideo) return fakegroup('Marque o video pfv!!')
+            fakegroup(mess.wait)
+            encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
+            media = await venom.downloadAndSaveMediaMessage(encmedia)
+            ran = getRandom('.mp4')
+            exec(`ffmpeg -i ${media} -filter_complex "[0:v]setpts=2*PTS[v];[0:a]atempo=0.5[a]" -map "[v]" -map "[a]" ${ran}`, (err) => {
+            fs.unlinkSync(media)
+            if (err) return fakegroup(`Err: ${err}`)
+            buffer453 = fs.readFileSync(ran)
+            venom.sendMessage(from, buffer453, video, { mimetype: 'video/mp4', quoted: mek })
+            fs.unlinkSync(ran)
+            })
+            break
+    case 'reverse':
+            if (!isQuotedVideo) return fakegroup('Marque o video pfv!!')
+            encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
+            media = await venom.downloadAndSaveMediaMessage(encmedia)
+            ran = getRandom('.mp4')
+            exec(`ffmpeg -i ${media} -vf reverse -af areverse ${ran}`, (err) => {
+            fs.unlinkSync(media)
+            if (err) return fakegroup(`Err: ${err}`)
+            buffer453 = fs.readFileSync(ran)
+            venom.sendMessage(from, buffer453, video, { mimetype: 'video/mp4', quoted: mek })
+            fs.unlinkSync(ran)
+            })
+            break
+    case 'anime':
+            reply(mess.wait)
+            fetch('https://raw.githubusercontent.com/pajaar/grabbed-results/master/pajaar-2020-gambar-anime.txt')
+            .then(res => res.text())
+            .then(body => {
+            let tod = body.split("\n");
+            let pjr = tod[Math.floor(Math.random() * tod.length)];
+            imageToBase64(pjr)
+            .then((response) => {
+            media =  Buffer.from(response, 'base64');
+            venom.sendMessage(from,media,image,{quoted:mek,caption:'NIH'})
+            }
+            )
+            .catch((error) => {
+            console.log(error); 
+            }
+            )
+            });
+            break
+    case 'kontak':
+            pe = args.join(' ') 
+            entah = pe.split('|')[0]
+            nah = pe.split('|')[1]
+            if (isNaN(entah)) return reply('Número inválido');
+            vcard = 'BEGIN:VCARD\n'
+            + 'VERSION:3.0\n'
+            + `FN:${nah}\n`
+            + `TEL;type=CELL;type=VOICE;waid=${entah}:${phoneNum('+' + entah).getNumber('internasional')}\n`
+            + 'END:VCARD'.trim()
+            venom.sendMessage(from, {displayName: `${nah}`, vcard: vcard}, contact)
+            break    
+    case 'l9':
+    case 'take':
+    case 'colong':
+    		if (!isQuotedSticker) return reply('Marque a figurinha')
+            encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+		    media = await venom.downloadAndSaveMediaMessage(encmedia)
+            anu = args.join(' ').split('|')
+            satu = anu[0] !== '' ? anu[0] : `venom`
+            dua = typeof anu[1] !== 'undefined' ? anu[1] : `BOT`
+            require('./lib/fetcher.js').createExif(satu, dua)
+			require('./lib/fetcher.js').modStick(media, venom, mek, from)
+			break
+	case 'stikerwm':
+	case 'stickerwm':
+    case 'swm':
+            pe = args.join('')
+            var a = pe.split("|")[0];
+            var b = pe.split("|")[1];
+            if (isMedia && !mek.message.videoMessage || isQuotedImage ) {
+            const encmedia = isQuotedImage   ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+             media = await venom.downloadAndSaveMediaMessage(encmedia)
+            await createExif(a,b)
+            out = getRandom('.webp')
+            ffmpeg(media)
+            .on('error', (e) => {
+            console.log(e)
+            venom.sendMessage(from, 'Há um erro', 'conversation', { quoted: mek })
+            fs.unlinkSync(media)
+            })
+            .on('end', () => {
+            _out = getRandom('.webp')
+            spawn('webpmux', ['-set','exif','./stik/data.exif', out, '-o', _out])
+            .on('exit', () => {
+            venom.sendMessage(from, fs.readFileSync(_out),'stickerMessage', { quoted: mek })
+            fs.unlinkSync(out)
+            fs.unlinkSync(_out)
+            fs.unlinkSync(media)
+            })
+            })
+            .addOutputOptions([`-vcodec`,`libwebp`,`-vf`,`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`])
+            .toFormat('webp')
+            .save(out) 
+            } else if ((isMedia && mek.message.videoMessage.seconds < 11 || isQuotedVideo && mek.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.seconds < 11) && args.length == 0) {
+            const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+            const media = await venom.downloadAndSaveMediaMessage(encmedia)
+            pe = args.join('')
+            var a = pe.split("|")[0];
+            var b = pe.split("|")[1];
+            await createExif(a,b)
+            out = getRandom('.webp')
+            ffmpeg(media)
+            .on('error', (e) => {
+            console.log(e)
+            venom.sendMessage(from, 'Há um erro', 'conversation', { quoted: mek })
+            fs.unlinkSync(media)
+            })
+            .on('end', () => {
+            _out = getRandom('.webp')
+            spawn('webpmux', ['-set','exif','./stik/data.exif', out, '-o', _out])
+            .on('exit', () => {
+            venom.sendMessage(from, fs.readFileSync(_out),'stickerMessage', { quoted: mek })
+            fs.unlinkSync(out)
+            fs.unlinkSync(_out)
+            fs.unlinkSync(media)
+            })
+            })
+            .addOutputOptions([`-vcodec`,`libwebp`,`-vf`,`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`])
+            .toFormat('webp')
+            .save(out)       
+            } else {
+            reply(`Envie uma foto com uma legenda ${prefix}swm texto|texto ou marcar imagens que já foram enviadas`)
+            }
+            break
+    case 'upswteks':
+            if (!q) return fakestatus('Preencha o texto!')
+            venom.sendMessage('status@broadcast', `${q}`, extendedText)
+            fakegroup(`Texto da história de sucesso ${q}`)
+            break
+    case 'upswimage':
+            if (isQuotedImage) {
+            const swsw = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
+            cihcih = await venom.downloadMediaMessage(swsw)
+            venom.sendMessage('status@broadcast', cihcih, image, { caption: `${q}` })
+            bur = `Carregar com sucesso a imagem da história com legenda: ${q}`
+            venom.sendMessage(from, bur, text, { quoted: mek })
+            } else {
+            fakestatus('Reply gambarnya!')
+            }
+            break
+    case 'upswvideo':
+            if (isQuotedVideo) {
+            const swsw = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
+            cihcih = await venom.downloadMediaMessage(swsw)
+            venom.sendMessage('status@broadcast', cihcih, video, { caption: `${q}` }) 
+            bur = `Carregar com sucesso a video da história com legenda: ${q}`
+            venom.sendMessage(from, bur, text, { quoted: mek })
+            } else {
+            fakestatus('reply videonya!')
+            }
+            break
+    case 'fdeface':
+            ge = args.join('')           
+            var pe = ge.split("|")[0];
+            var pen = ge.split("|")[1];
+            var pn = ge.split("|")[2];
+            var be = ge.split("|")[3];
+            const fde = `enviar / responder imagem com legenda ${prefix}fdeface link | título | desc | texto`
+            if (args.length < 1) return reply (fde)
+            const dipes = isQuotedSticker || isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+            const tipes = await venom.downloadAndSaveMediaMessage(dipes)        
+            const bufer = fs.readFileSync(tipes)
+            const desc = `${pn}`
+            const title = `${pen}`
+            const url = `${pe}`
+            const buu = `https://${be}`
+    		var anu = {
+        	detectLinks: false
+    		}
+    		var mat = await venom.generateLinkPreview(url)
+    		mat.title = title;
+    		mat.description = desc;
+    		mat.jpegThumbnail = bufer;
+   			mat.canonicalUrl = buu; 
+    		venom.sendMessage(from, mat, MessageType.extendedText, anu)
+            break
+    case 'public':
+          	if (!mek.key.fromMe) return fakestatus('ATIVADO MODO-PUBLICO NO-VENOMBOT')
+          	if (banChats === false) return
+          	// var taged = ben.message.extendedTextMessage.contextInfo.mentionedJid[0]
+          	banChats = false
+          	fakestatus(`「 *ativado-modo-publico* 」`)
+          	break
+	case 'privado':
+          	if (!mek.key.fromMe) return fakestatus('ATIVADO MUDO-PRIVADO NO-VENOMBOT')
+          	if (banChats === true) return
+          	uptime = process.uptime()
+         	 // var taged = ben.message.extendedTextMessage.contextInfo.mentionedJid[0]
+         	banChats = true
+          	fakestatus(`「 *ativado-modo-privado* 」`)
+          	break
+ 	case 'hidetag':
+			if (!isGroup) return reply(mess.only.group)
+			var value = args.join(' ')
+			var group = await venom.groupMetadata(from)
+			var member = group['participants']
+			var mem = []
+			member.map(async adm => {
+			mem.push(adm.id.replace('c.us', 's.whatsapp.net'))
+			})
+			var optionshidetag = {
+			text: value,
+			contextInfo: { mentionedJid: mem },
+			quoted: mek
+			}
+			venom.sendMessage(from, optionshidetag, text)
+			break
+	case 'listadmin':
+					if (!isGroup) return reply(mess.only.group)
+					teks = `lista de off do grupo *${groupMetadata.subject}*\n𝗧𝗼𝘁𝗮𝗹 : ${groupAdmins.length}\n\n`
+					no = 0
+					for (let admon of groupAdmins) {
+						no += 1
+						teks += `[${no.toString()}] @${admon.split('@')[0]}\n`
+					}
+					mentions(teks, groupAdmins, true)
+					break
+	case 'play':
+	        reply(mess.wait)
+			if (args.length === 0) return reply(`Envie asim *${prefix}play* Despacitoi`)
+            var srch = args.join('')
+    		aramas = await yts(srch);
+    		aramat = aramas.all 
+   			var mulaikah = aramat[0].url							
+                  try {
+                    yta(mulaikah)
+                    .then((res) => {
+                        const { dl_link, thumb, title, filesizeF, filesize } = res
+                        axios.get(`https://tinyurl.com/api-create.php?url=${dl_link}`)
+                        .then(async (a) => {
+                        if (Number(filesize) >= 100000) return sendMediaURL(from, thumb, `*PLAY MUSICA*\n\n*Título* : ${title}\n*Ext* : MP3\n*Duração* : ${filesizeF}\n*Link* : ${a.data}\n\n_Para a duração de mais do que o limite é apresentado no link mektuk_`)
+                        const captions = `*PLAY MUSICA*\n\n*Titulo* : ${title}\n*Ext* : MP3\n*Duração* : ${filesizeF}\n*Link* : ${a.data}\n\n_Aguarde o envio do arquivo de mídia; isso pode levar alguns minutos_`
+                        sendMediaURL(from, thumb, captions)
+                        await sendMediaURL(from, dl_link).catch(() => reply('error'))
+                        })                
+                        })
+                        } catch (err) {
+                        reply(mess.error.api)
+                        }
+                   break  
+        case 'video':
+            if (args.length === 0) return reply(`Envie asim *${prefix}video teto m4_`)
+            var srch = args.join('')
+            aramas = await yts(srch);
+            aramat = aramas.all 
+            var mulaikah = aramat[0].url                            
+                  try {
+                    ytv(mulaikah)
+                    .then((res) => {
+                        const { dl_link, thumb, title, filesizeF, filesize } = res
+                        axios.get(`https://tinyurl.com/api-create.php?url=${dl_link}`)
+                        .then(async (a) => {
+                        if (Number(filesize) >= 100000) return sendMediaURL(from, thumb, `*PLAY VIDEO*\n\n*Título* : ${title}\n*Ext* : MP3\n*Tamanho* : ${filesizeF}\n*Link* : ${a.data}\n\n_Para durações superiores ao limite são apresentadas no link mektuk_`)
+                        const captions = `*PLAY VIDEO*\n\n*Title* : ${title}\n*Ext* : MP4\n*Size* : ${filesizeF}\n*Link* : ${a.data}\n\n_Por favor, aguarde o envio do arquivo de mídia; pode demorar alguns minutos_`
+                        sendMediaURL(from, thumb, captions)
+                        await sendMediaURL(from, dl_link).catch(() => reply('error'))
+                        })                
+                        })
+                        } catch (err) {
+                        reply(mess.error.api)
+                        }
+                   break      
+    case 'sticker': 
+    case 'stiker':
+    case 'sg':
+    case 's':
+            reply(mess.wait)
+            if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
+            const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
+            const media = await venom.downloadAndSaveMediaMessage(encmedia)
+                ran = '666.webp'
+                await ffmpeg(`./${media}`)
+                .input(media)
+                .on('start', function (cmd) {
+                     console.log(`Started : ${cmd}`)
+                })
+                .on('error', function (err) {
+                 console.log(`Error : ${err}`)
+                fs.unlinkSync(media)
+                reply('error')
+                })
+                .on('end', function () {
+                console.log('Finish')
+                venom.sendMessage(from, fs.readFileSync(ran), sticker, {quoted: mek})
+                 fs.unlinkSync(media)
+                fs.unlinkSync(ran)
+                })
+                .addOutputOptions([`-vcodec`, `libwebp`, `-vf`, `scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`])
+                .toFormat('webp')
+                .save(ran)
+                } else if ((isMedia && mek.message.videoMessage.seconds < 11 || isQuotedVideo && mek.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.seconds < 11) && args.length == 0) {
+                const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
+                const media = await venom.downloadAndSaveMediaMessage(encmedia)
+            ran = '999.webp'
+            reply(mess.wait)
+            await ffmpeg(`./${media}`)
+            .inputFormat(media.split('.')[1])
+            .on('start', function (cmd) {
+            console.log(`Started : ${cmd}`)
+            })
+            .on('error', function (err) {
+            console.log(`Error : ${err}`)
+            fs.unlinkSync(media)
+            tipe = media.endsWith('.mp4') ? 'video' : 'gif'
+            reply(`Gagal, pada saat mengkonversi ${tipe} ke stiker`)
+            })
+            .on('end', function () {
+            console.log('Finish')
+            venom.sendMessage(from, fs.readFileSync(ran), sticker, {quoted: mek})
+            fs.unlinkSync(media)
+            fs.unlinkSync(ran)
+                })
+                .addOutputOptions([`-vcodec`, `libwebp`, `-vf`, `scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`])
+                .toFormat('webp')
+                .save(ran)
+            } else {
+                reply(`Kirim gambar dengan caption ${prefix}sticker\nDurasi Sticker Video 1-9 Detik`)
+            }
+            break            
+    case 'toimg':
+			if (!isQuotedSticker) return reply('Resposta/marque o 𝘀𝘁𝗶𝗰𝗸𝗲𝗿 !')
+			reply(mess.wait)
+			encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+			media = await venom.downloadAndSaveMediaMessage(encmedia)
+			ran = getRandom('.png')
+			exec(`ffmpeg -i ${media} ${ran}`, (err) => {
+			fs.unlinkSync(media)
+			if (err) return reply('Bem falhou, tente novamente ^_^')
+			buffer = fs.readFileSync(ran)
+			fakethumb(buffer,'NIH')
+			fs.unlinkSync(ran)
+			})
+			break
+	case 'ytsearch':
+			if (args.length < 1) return reply('Por favor insira uma consulta!')
+			var srch = args.join('');
+			try {
+        	var aramas = await yts(srch);
+   			} catch {
+        	return await venom.sendMessage(from, 'Error!', MessageType.text, dload)
+    		}
+    		aramat = aramas.all 
+    		var tbuff = await getBuffer(aramat[0].image)
+    		var ytresult = '';
+    		ytresult += '「 *Pesquisa de YouTube* 」'
+    		ytresult += '\n________________________\n\n'
+   			aramas.all.map((video) => {
+        	ytresult += '❏ Título: ' + video.title + '\n'
+            ytresult += '❏ Link: ' + video.url + '\n'
+            ytresult += '❏ Duração: ' + video.timestamp + '\n'
+            ytresult += '❏ Envios: ' + video.ago + '\n________________________\n\n'
+    		});
+    		ytresult += '◩ *VENOM-BOT*'
+    		await fakethumb(tbuff,ytresult)
+			break
+	case 'setreply':
+	case 'setfake':
+			if (!q) return fakegroup(mess.wrongFormat)
+			fake = q
+			fakegroup(`Conversa falsa de mudada com sucesso: ${q}`)
+			break
+	case 'setfakeimg':
+        	if ((isMedia && !mek.message.videoMessage || isQuotedImage || isQuotedSticker) && args.length == 0) {
+          	boij = isQuotedImage || isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+			delb = await venom.downloadMediaMessage(boij)
+			fs.writeFileSync(`./stik/fake.jpeg`, delb)
+			fakestatus('Sucessk')
+        	} else {
+            reply(`Envie uma foto com uma legenda ${prefix}sethumb`)
+          	}
+			break	
+	case 'setthumb':
+	        if ((isMedia && !mek.message.videoMessage || isQuotedImage || isQuotedSticker) && args.length == 0) {
+          	boij = isQuotedImage || isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+			delb = await venom.downloadMediaMessage(boij)
+			fs.writeFileSync(`./stik/thumb.jpeg`, delb)
+			fakestatus('Sucessk')
+        	} else {
+            reply(`Envie uma foto com uma legenda ${prefix}sethumb`)
+          	}
+			break	
+	case 'ytmp4':
+			if (args.length === 0) return reply(`Kirim perintah *${prefix}ytmp4 [linkYt]*`)
+			let isLinks2 = args[0].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
+			if (!isLinks2) return reply(mess.error.Iv)
+				try {
+				reply(mess.wait)
+				ytv(args[0])
+				.then((res) => {
+				const { dl_link, thumb, title, filesizeF, filesize } = res
+				axios.get(`https://tinyurl.com/api-create.php?url=${dl_link}`)
+				.then((a) => {
+				if (Number(filesize) >= 40000) return sendMediaURL(from, thumb, `*YTMP 4!*\n\n*Title* : ${title}\n*Ext* : MP3\n*Filesize* : ${filesizeF}\n*Link* : ${a.data}\n\n_Untuk durasi lebih dari batas disajikan dalam mektuk link_`)
+				const captionsYtmp4 = `*Data Berhasil Didapatkan!*\n\n*Title* : ${title}\n*Ext* : MP4\n*Size* : ${filesizeF}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
+				sendMediaURL(from, thumb, captionsYtmp4)
+				sendMediaURL(from, dl_link).catch(() => reply(mess.error.api))
+				})		
+				})
+				} catch (err) {
+			    reply(mess.error.api)
+				}
+				break
+	case 'bisakah':
+			if (!isGroup) return reply(mess.only.group)
+					bisakah = body.slice(1)
+					const bisa =['Pode ',' Não consigo ',' Tente novamente ',' Você está sonhando? ',' Tem certeza que pode?']
+					const keh = bisa[Math.floor(Math.random() * bisa.length)]
+					venom.sendMessage(from, 'Pergunta : *'+bisakah+'*\n\nResposta : '+ keh, text, { quoted: mek })
+					break
+	case 'kapankah':
+			if (!isGroup) return reply(mess.only.group)
+					kapankah = body.slice(1)
+					const kapan =['	Amanhã ',' Depois de amanhã ',' Mais cedo ',' 4 dias ',' 5 dias ',' 6 dias ',' 1 semana de novo ',' 2 semanas de novo ',' 3 semanas de novo ',' 1 mês De novo ',' 2 meses ',' 3 meses ',' 4 meses ',' 5 meses ',' 6 meses ',' 1 ano de novo ',' 2 anos de novo ',' 3 anos de novo ',' 4 anos de novo ',' 5 anos de novo ',' 6 anos de novo ',' 1 século de novo ',' 3 dias de novo ',' Nunca ']			
+					const koh = kapan[Math.floor(Math.random() * kapan.length)]
+					venom.sendMessage(from, 'Pergunta: *'+kapankah+'*\n\nResposta : '+ koh, text, { quoted: mek })
+					break
+     case 'apakah':
+			if (!isGroup) return reply(mess.only.group)
+					apakah = body.slice(1)
+					const apa =['Sim', 'Não', 'Pode ser', 'Tente novamente', 'Pergunte ao frango']
+					const kah = apa[Math.floor(Math.random() * apa.length)]
+					venom.sendMessage(from, 'Pergunta : *'+apakah+'*\n\nResposta : '+ kah, text, { quoted: mek })
+					break
+	case 'attp':
+			if (!isGroup) return reply(mess.only.group)
+				if (args.length < 1) return reply(`_O texto é onde chefe_\n*Contoh ${prefix}attp venom*`)
+				attp2 = await getBuffer(`https://api.xteam.xyz/attp?file&text=${body.slice(6)}`)
+				venom.sendMessage(from, attp2, sticker, {quoted: mek})
+				break
+	case 'ttp':
+			if (!isGroup) return reply(mess.only.group)
+				if (args.length < 1) return reply(`_O texto é onde está o chefe_\n*Exemplo ${prefix}attp venom*`)
+				ttp = await getBuffer(`https://api.xteam.xyz/ttp?file&text=${body.slice(5)}`)
+				venom.sendMessage(from, ttp, sticker, {quoted: mek})
+				break
+	case 'emoji':
+			if (!q) return fakegroup('Cade o emoji mno?')
+			qes = args.join(' ')
+			emoji.get(`${qes}`).then(emoji => {
+			teks = `${emoji.images[4].url}`
+    		sendStickerFromUrl(from,`${teks}`)	
+    		console.log(teks)
+   			})
+    		break
+	case 'ytmp3':
+			if (args.length === 0) return reply(`Envie pedidos *${prefix}ytmp3 [linkYt]*`)
+			let isLinks = args[0].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
+			if (!isLinks) return reply(mess.error.Iv)
+				try {
+				reply(mess.wait)
+				yta(args[0])
+				.then((res) => {
+				const { dl_link, thumb, title, filesizeF, filesize } = res
+				axios.get(`https://tinyurl.com/api-create.php?url=${dl_link}`)
+				.then((a) => {
+			    if (Number(filesize) >= 30000) return sendMediaURL(from, thumb, `*Data Berhasil Didapatkan!*\n\n*Title* : ${title}\n*Ext* : MP3\n*Filesize* : ${filesizeF}\n*Link* : ${a.data}\n\n_Untuk durasi lebih dari batas disajikan dalam mektuk link_`)
+				const captions = `*YTMP3*\n\n*Title* : ${title}\n*Ext* : MP3\n*Size* : ${filesizeF}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
+				sendMediaURL(from, thumb, captions)
+				sendMediaURL(from, dl_link).catch(() => reply(mess.error.api))
+				})
+				})
+				} catch (err) {
+				reply(mess.error.api)
+				}
+				break
+      case 'pap':
+			if (!isGroup) return reply(mess.only.group)
+              bilan = fs.readFileSync('./mp3/sound12');
+              venom.sendMessage(from, bilan, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+              await limitAdd(sender)
+              break
+      case 'didunia':
+			if (!isGroup) return reply(mess.only.group)
+              bilan = fs.readFileSync('./mp3/didunia');
+              venom.sendMessage(from, bilan, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+              await limitAdd(sender)
+              break
+      case 'welot':
+			if (!isGroup) return reply(mess.only.group)
+              bilan = fs.readFileSync('./mp3/welot');
+              venom.sendMessage(from, bilan, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+              await limitAdd(sender)
+              break
+      case 'barabere':
+			if (!isGroup) return reply(mess.only.group)
+              bilan = fs.readFileSync('./mp3/barabere');
+              venom.sendMessage(from, bilan, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+              await limitAdd(sender)
+              break
+      case 'fyp':
+			if (!isGroup) return reply(mess.only.group)
+              bilan = fs.readFileSync('./mp3/fyp');
+              venom.sendMessage(from, bilan, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+              await limitAdd(sender)
+              break
+      case 'myfather':
+			if (!isGroup) return reply(mess.only.group)
+              bilan = fs.readFileSync('./mp3/myfather');
+              venom.sendMessage(from, bilan, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+              await limitAdd(sender)
+              break
+      case 'ladadida':
+			if (!isGroup) return reply(mess.only.group)
+              bilan = fs.readFileSync('./mp3/ladadida');
+              venom.sendMessage(from, bilan, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+              await limitAdd(sender)
+              break
+    case 'image':
+            if (args.length < 1) return reply('Cade o texto!')
+            const gimg = args.join('');
+            reply(mess.wait)
+            gis(gimg, async (error, result) => {
+            n = result
+            images = n[Math.floor(Math.random() * n.length)].url
+            venom.sendMessage(from,{url:images},image,{quoted:mek})
+            });
+            break
+ 	case 'tiktok':
+ 		if (!isUrl(args[0]) && !args[0].includes('tiktok.com')) return reply(mess.Iv)
+ 		if (!q) return fakegroup('Link pfv?')
+ 		reply(mess.wait)
+		tik.ssstik(`${args[0]}`)
+    		.then(result => {
+    		console.log(result)
+    		const { videonowm, videonowm2, text } = result
+    		axios.get(`https://tinyurl.com/api-create.php?url=${videonowm2}`)
+    		.then(async (a) => {
+    		me = `*Título* : ${text}\n*Link* : ${a.data}`
+		venom.sendMessage(from,{url:`${videonowm}`},video,{mimetype:'video/mp4',quoted:mek,caption:me})
+		})
+		})
+     		.catch(e => console.log(e))
+     		break
+    case 'tiktokaudio':
+ 		if (!isUrl(args[0]) && !args[0].includes('tiktok.com')) return reply(mess.Iv)
+ 		if (!q) return fakegroup('Link pfv?')
+ 		reply(mess.wait)
+ 		tik.ssstik(`${args[0]}`)
+    		.then(result => {
+    		const { music,text } = result
+		venom.sendMessage(from,{url:`${music}`},audio,{mimetype:'audio/mp4',filename : `${text}`,quoted:mek})
+		})
+     		.catch(e => console.log(e))
+     		break
+    case 'brainly':
+			if (args.length < 1) return reply('Pertanyaan apa')
+          	brien = args.join(' ')
+			brainly(`${brien}`).then(res => {
+			teks = '❉───────────────────────❉\n'
+			for (let Y of res.data) {
+			teks += `\n*「 _BRAINLY_ 」*\n\n*➸ Pergunta:* ${Y.pertanyaan}\n\n*➸ Responder:* ${Y.jawaban[0].text}\n❉──────────────────❉\n`
+			}
+			venom.sendMessage(from, teks, text,{quoted:mek,detectLinks: false})                        
+            })              
+			break
+    case 'ig':
+        if (!isUrl(args[0]) && !args[0].includes('instagram.com')) return reply(mess.Iv)
+        if (!q) return fakegroup('Linknya?')
+        reply(mess.wait)
+	    igdl(args[0])
+	    .then(async(result) => {
+            for (let ink of result.url_list)	{
+            if (ink.includes('.mp4')){
+            const igvdl = await getBuffer(ink)	
+	    venom.sendMessage(from,igvdl,video,{mimetype:'video/mp4',quoted:mek,caption:'Nih'})
+            } else if (ink.includes('.jpg')){
+            const igpdl = await getBuffer(ink)
+            venom.sendMessage(from,igpdl,image,{mimetype:'image/jpeg',quoted:mek,caption:'Nih'})
+	    }
+            }
+	    })
+	    break
+    case 'igstalk':
+            if (!q) return fakegroup('Usuário pfv?')
+            ig.fetchUser(`${args.join(' ')}`).then(Y => {
+            console.log(`${args.join(' ')}`)
+            ten = `${Y.profile_pic_url_hd}`
+            teks = `*ID* : ${Y.profile_id}\n*Usuário* : ${args.join('')}\n*Nome* : ${Y.full_name}\n*Bio* : ${Y.biography}\n*Segruidores* : ${Y.followers}\n*Seguindo* : ${Y.following}\n*Privacidade* : ${Y.is_private}\n*Verificado* : ${Y.is_verified}\n\n*Link* : https://instagram.com/${args.join('')}`
+            sendMediaURL(from,ten,teks) 
+            })      
+            break    
+    case 'fb':
+            if (!q) return reply('Link pfv?')
+            if (!isUrl(args[0]) && !args[0].includes('facebook.com')) return reply(mess.Iv)
+            reply(mess.wait)
+            te = args.join(' ')
+            fakestatus(mess.wait)
+            Fb.getInfo(`${te}`)
+            .then(G => {
+            ten = `${G.download.sd}`
+            tek = `${G.title}`
+            sendMediaURL(from,ten,`*Titulo* : ${tek}\n\n*Link* : ${ten}`)
+            })
+            break    
+	case 'term':
+			if (!q) return fakegroup(mess.wrongFormat)
+			exec(q, (err, stdout) => {
+			if (err) return fakegroup(`VENOM-BOT:~ ${err}`)
+			if (stdout) {
+			fakegroup(stdout)
+			}
+			})
+		    break 
+    case 'join':
+            try {
+            if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return reply(mess.Iv)
+            hen = args[0]
+            if (!q) return fakestatus('Insira o link do grupo')
+            var codeInvite = hen.split('https://chat.whatsapp.com/')[1]
+            if (!codeInvite) return fakegroup ('certifique-se de que o link está correto!')
+            var response = await venom.acceptInvite(codeInvite)
+            fakestatus('Sucesso mno')
+            } catch {
+            fakegroup('link permanente errado!')
+            }
+            break
+    case'twitter':
+            if (!isUrl(args[0]) && !args[0].includes('twitter.com')) return reply(mess.Iv)
+            if (!q) return fakegroup('Link pfv?')
+            ten = args[0]
+            var res = await twitterGetUrl(`${ten}`)
+            .then(g => {
+            ren = `${g.download[2].url}`
+            sendMediaURL(from,ren,'Prontinho')
+            })
+            break
+    case 'runtime':
+    case 'test':
+            run = process.uptime() 
+            teks = `${kyun(run)}`
+            fakegroup(teks)
+            break  
+	case 'speed':
+	case 'ping':
+			const timestamp = speed();
+			const latensi = speed() - timestamp
+			exec(`neofetch --stdout`, (error, stdout, stderr) => {
+			const child = stdout.toString('utf-8')
+			const teks = child.replace(/Memory:/, "Ram:")
+			const pingnya = `*${teks}Velocidade: ${latensi.toFixed(4)} Segundos*`
+			fakegroup(pingnya)
+			})
+			break  
+    case 'totag':
+            if ((isMedia && !mek.message.videoMessage || isQuotedSticker) && args.length == 0) {
+            encmedia = isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
+            file = await venom.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
+            value = args.join(" ")
+            var group = await venom.groupMetadata(from)
+            var member = group['participants']
+            var mem = []
+            member.map(async adm => {
+            mem.push(adm.id.replace('c.us', 's.whatsapp.net'))
+            })
+            var options = {
+                contextInfo: { mentionedJid: mem },
+                quoted: mek
+            }
+            ini_buffer = fs.readFileSync(file)
+            venom.sendMessage(from, ini_buffer, sticker, options)
+            fs.unlinkSync(file)
+            } else if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
+            encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
+            file = await venom.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
+            value = args.join(" ")
+            var group = await venom.groupMetadata(from)
+            var member = group['participants']
+            var mem = []
+            member.map(async adm => {
+            mem.push(adm.id.replace('c.us', 's.whatsapp.net'))
+            })
+            var options = {
+                contextInfo: { mentionedJid: mem },
+                quoted: mek
+            }
+            ini_buffer = fs.readFileSync(file)
+            venom.sendMessage(from, ini_buffer, image, options)
+            fs.unlinkSync(file)
+        } else if ((isMedia && !mek.message.videoMessage || isQuotedAudio) && args.length == 0) {
+            encmedia = isQuotedAudio ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
+            file = await venom.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
+            value = args.join(" ")
+            var group = await venom.groupMetadata(from)
+            var member = group['participants']
+            var mem = []
+            member.map(async adm => {
+            mem.push(adm.id.replace('c.us', 's.whatsapp.net'))
+            })
+            var options = {
+                mimetype : 'audio/mp4',
+                ptt : true,
+                contextInfo: { mentionedJid: mem },
+                quoted: mek
+            }
+            ini_buffer = fs.readFileSync(file)
+            venom.sendMessage(from, ini_buffer, audio, options)
+            fs.unlinkSync(file)
+        }  else if ((isMedia && !mek.message.videoMessage || isQuotedVideo) && args.length == 0) {
+            encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
+            file = await venom.downloadAndSaveMediaMessage(encmedia, filename = getRandom())
+            value = args.join(" ")
+            var group = await venom.groupMetadata(from)
+            var member = group['participants']
+            var mem = []
+            member.map(async adm => {
+            mem.push(adm.id.replace('c.us', 's.whatsapp.net'))
+            })
+            var options = {
+                mimetype : 'video/mp4',
+                contextInfo: { mentionedJid: mem },
+                quoted: mek
+            }
+            ini_buffer = fs.readFileSync(file)
+            venom.sendMessage(from, ini_buffer, video, options)
+            fs.unlinkSync(file)
+        } else{
+          reply(`Envie /sticker/audio/video Na legenda o seguinte ${prefix}totag`)
+        }
+        break
+    case 'tomp4':
+            if ((isMedia && !mek.message.videoMessage || isQuotedSticker) && args.length == 0) {
+            ger = isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
+            owgi = await venom.downloadAndSaveMediaMessage(ger)
+            webp2mp4File(owgi).then(res=>{
+            sendMediaURL(from,res.result,'Done')
+            })
+            }else {
+            reply('Marque a figurinha')
+            }
+            fs.unlinkSync(owgi)
+            break
+     case 'tm':
+					targetpc = args[0]
+					if (args.length < 1) return reply('Descupas chefe vc não digitou nenhum texto ')
+					anu = await venom.chats.all()
+					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
+						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : fakestatus
+						bc = await venom.downloadMediaMessage(encmedia)
+						for (let _ of anu) {
+							venom.sendMessage(_.jid, bc, image, {caption: `[ TM ${selo}* ]\n\n${body.slice(4)}`})
+						}
+						reply('Transmissão feita com sucesso')
+					} else {
+						for (let _ of anu) {
+							sendMess(_.jid, `[ *TM ${selo}* ]\n\n${body.slice(4)}`)
+						}
+						reply('Transmissão feita com sucesso')
+					}
+					break       
+    case 'tourl':
+            if ((isMedia && !mek.message.videoMessage || isQuotedImage || isQuotedVideo ) && args.length == 0) {
+            boij = isQuotedImage || isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : fakestatus
+            owgi = await venom.downloadMediaMessage(boij)
+            res = await upload(owgi)
+            reply(res)
+            } else {
+            reply('Marque/ou envie/videos')
+            }
+            break	
+    case 'inspect':
+            try {
+            if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return reply(mess.Iv)
+            if (!q) return reply('entre no link wa')
+            cos = args[0]
+            var net = cos.split('https://chat.whatsapp.com/')[1]
+            if (!net) return reply('certifique-se de que é um link https://whatsapp.com/')
+            jids = []
+            let { id, owner, subject, subjectOwner, desc, descId, participants, size, descOwner, descTime, creation} = await venom.query({ 
+            json: ["query", "invite",net],
+            expect200:true })
+            let par = `*Id* : ${id}
+${owner ? `*Dono* : @${owner.split('@')[0]}` : '*Dono* : -'}
+*Número* : ${subject}
+*Data de criação* : ${formatDate(creation * 1000)}
+*Número de membros* : ${size}
+${desc ? `*Descrição* : ${desc}` : '*Descrição* : não há nenhum'}
+*Id Descrição* : ${descId}
+${descOwner ? `*Desc modificado por* : @${descOwner.split('@')[0]}` : '*Desc modificado por* : -'}\n*Encontro* : ${descTime ? `${formatDate(descTime * 1000)}` : '-'}\n\n*Contatos salvos*\n`
+           for ( let y of participants) {
+             par += `> @${y.id.split('@')[0]}\n*Admin* : ${y.isAdmin ? 'Sim' : 'não há nenhum'}\n`
+             jids.push(`${y.id.replace(/@c.us/g,'@s.whatsapp.net')}`)
+             }
+             jids.push(`${owner ? `${owner.replace(/@c.us/g,'@s.whatsapp.net')}` : '-'}`)
+             jids.push(`${descOwner ? `${descOwner.replace(/@c.us/g,'@s.whatsapp.net')}` : '-'}`)
+             venom.sendMessage(from,par,text,{quoted:mek,contextInfo:{mentionedJid:jids}})
+             } catch {
+             reply('Link inválido')
+             }
+             break
+default:
+        if (budy.includes(`assalamualaikum`)) {
+                  reply(`Waalaikumsalam`)
+                  }
+
+		if (budy.includes(`Assalamualaikum`)) {
+                  reply(`Waalaikumsalam`)
+                  }
+
+		if (budy.includes(`Sepi`)) {
+                  reply(`Iya🗿`)
+                  }
+
+if (budy.startsWith('x')){
+try {
+return venom.sendMessage(from, JSON.stringify(eval(budy.slice(2)),null,'\t'),text, {quoted: mek})
+} catch(err) {
+e = String(err)
+reply(e)
+}
+}  
+
+	}
+if (isGroup && budy != undefined) {
+	} else {
+	console.log(color('[TEXTO]', 'red'), 'SELF-MODO-VENOMBOT', color(sender.split('@')[0]))
+	}		
+	} catch (e) {
+    e = String(e)
+    if (!e.includes("this.isZero")) {
+	console.log('Message : %s', color(e, 'green'))
+        }
+	// console.log(e)
+	}
+}
+// FIM DA SCRIPT NAO MEXA OK 
+
+	
+    
