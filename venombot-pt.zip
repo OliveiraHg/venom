@@ -345,7 +345,7 @@ Prefixo : use qualque um
 ⁿⁱᶜᵏ ${nomedono}
 ⁿᵒᵐᵉ ᵈᵒ ᵇᵒᵗ ${nomebot}
 ᶜⁱᵈᵃᵈᵉ ${cidade}
-ⁿᵘᵐᵉʳᵒ: Wa.me/${numerodono}
+ⁿᵘᵐᵉʳᵒ: ${numerodono}
 ᵍⁱᵗʰᵘᵇ ⁿᵃˢᵉ:
 ᵍⁱᵗʰᵘᵇ ᵇᵃʳᵇᵃʳ: ${barbar}
 ᵉˢᵗᵉ ᵇᵒᵗ ᶠᵒⁱ ᶠᵉⁱᵗᵒ ᵖᵒʳ :
